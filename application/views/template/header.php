@@ -7,7 +7,7 @@
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<title>zAtos - teste de acesso restrito a cadastro utilizando CodeIgniter PHP</title>
+		<title>ZATOS - Teste de acesso restrito a cadastro utilizando CodeIgniter PHP</title>
 		<!-- Bootstrap core CSS -->
 		<link href="<?php echo base_url(); ?>public/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -30,7 +30,6 @@
 				<link href="<?=$href?>" rel="stylesheet">
 			<?php }
 		} ?>
-		
 	</head>
 	<body id="page-top">
 		<!-- Navigation -->
@@ -48,14 +47,17 @@
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
+					
 						<li>
 							<a class="page-scroll" href="<?php echo base_url(); ?>restrict">Login</a>
 						</li>
 						<li>
+							<a class="page-scroll" href="<?php echo base_url(); ?>#chat">Chat</a>
+						</li>
+						<li>
 							<a class="page-scroll" href="<?php echo base_url(); ?>#contact">Contato</a>
 						</li>
-					</ul>
+					
 				</div>
 				<!-- /.navbar-collapse -->
 			</div>

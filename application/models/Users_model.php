@@ -119,4 +119,18 @@ class Users_model extends CI_Model {
 
 	}
 
+	public function get_last_user_data() {
+
+		$dateTime = new DateTime("-5 minutes");
+		$time5 = $dateTime->format('Y-m-d H:i:s');
+
+		$this->db
+			->select("*")
+			->from("users")
+			->where("date_activity", $time5);
+
+		return $this->db->get()->result();
+
+	}
+
 }

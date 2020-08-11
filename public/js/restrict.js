@@ -7,6 +7,18 @@ $(function() {
 		$("#modal_user").modal();
 	});
 
+	$("#btn_last_user").click(function(){
+		$.ajax({
+			type: "POST",
+			url: BASE_URL + "restrict/ajax_list_last_user",
+			dataType: "json",
+			data: {"user_id": $(this).attr("user_id")},
+			success: function(response) {
+				dt_user.ajax.reload();
+			}
+		})
+	});
+
 	$("#btn_mark_geo").click(function() {
 
 		if (navigator.geolocation) { 
@@ -131,5 +143,4 @@ $(function() {
 			active_btn_user();
 		}
 	});
-
 })

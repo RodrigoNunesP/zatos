@@ -5,6 +5,18 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-        $this->template->show('home');
+		$data = array( 
+			"styles" => array(
+				"chat.css"
+			),
+			"scripts" => array(
+				"chat.js",
+				"owl.carousel.min.js",
+				"cbpAnimatedHeader.js",
+				"theme-scripts.js" 
+			)
+		);
+
+        $this->template->show('home',$data);
 	}
 }

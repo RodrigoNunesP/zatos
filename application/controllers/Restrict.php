@@ -204,11 +204,10 @@ class Restrict extends CI_Controller{
 
 		$data = array();
 		foreach ($users as $user) {
-
 			$row = array();
-			$row[] = $user->user_access;
 			$row[] = $user->user_name;
 			$row[] = $user->email;
+			$row[] = $user->date_activity;
 
 			$row[] = '<div style="display: inline-block;">
 						<button class="btn btn-primary btn-edit-user" 
@@ -222,8 +221,50 @@ class Restrict extends CI_Controller{
 					</div>';
 
 			$data[] = $row;
-
 		}
+
+		$json = array(
+			"draw" => $this->input->post("draw"),
+			"recordsTotal" => $this->users_model->records_total(),
+			"recordsFiltered" => $this->users_model->records_filtered(),
+			"data" => $data,
+		);
+
+		echo json_encode($json);
+	}
+	
+	
+	public function ajax_list_last_user() {
+
+		if (!$this->input->is_ajax_request()) {
+			exit("Nenhum acesso de script direto permitido!");
+		}
+
+		$this->load->model("users_model");
+		$users = $this->users_model->get_last_user_data();
+		$data = array();
+
+		if(!empty($users)) {		
+			foreach ($users as $user) {
+				$row = array();
+				$row[] = $user->user_name;
+				$row[] = $user->email;
+				$row[] = $user->date_activity;
+
+				$row[] = '<div style="display: inline-block;">
+							<button class="btn btn-primary btn-edit-user" 
+								user_id="'.$user->user_id.'">
+								<i class="fa fa-edit"></i>
+							</button>
+							<button class="btn btn-danger btn-del-user" 
+								user_id="'.$user->user_id.'">
+								<i class="fa fa-times"></i>
+							</button>
+						</div>';
+
+				$data[] = $row;
+			}	
+		}	
 
 		$json = array(
 			"draw" => $this->input->post("draw"),
