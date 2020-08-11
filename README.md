@@ -16,3 +16,13 @@ Substituir a url raiz (http://localhost/zatos/zatos/) para a correspondente em s
 
 
 ../public/js/util.js 1,36: const BASE_URL = "http://localhost/zatos/zatos/"; 
+
+## Banco de dados
+
+- Está na raiz o SQL da base: para login inicial utilizar: 
+- login: admin  
+- password: admin
+
+## Questôes dissertativas
+
+- As questões dissertativas estão respondidas na home da aplicação e tambem em um arquivo na raiz "questionario_respostas.pdf"

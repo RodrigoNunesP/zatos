@@ -134,9 +134,17 @@ class Restrict extends CI_Controller{
 			unset($data["user_password_confirm"]);
 			unset($data["email_confirm"]);
 
+			$dateTime = new DateTime();
+			$timeNow = $dateTime->format('Y-m-d H:i:s');
+
 			if (empty($data["user_id"])) {
+				$data["date_register"] = $timeNow;
+				$data["date_modify"] = $timeNow;
+				$data["date_activity"] = $timeNow;
 				$this->users_model->insert($data);
 			} else {
+				$data["date_modify"] = $timeNow;
+				$data["date_activity"] = $timeNow;
 				$user_id = $data["user_id"];
 				unset($data["user_id"]);
 				$this->users_model->update($user_id, $data);
